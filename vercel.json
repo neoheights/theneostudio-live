@@ -2,7 +2,6 @@
 {
   "cleanUrls": true,
   "routes": [
-    { "src": "/", "dest": "index.html" },
     { "src": "/about", "dest": "/about.html" },
     { "src": "/blog", "dest": "/blog.html" },
     { "src": "/projects", "dest": "/projects.html" },
