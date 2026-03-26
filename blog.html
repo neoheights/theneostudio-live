@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Studio | Blog - Interior Design Insights</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
     <style>
         /* Force absolute white theme for blog page */
         html, body.blog-page {
@@ -31,9 +32,8 @@
         .blog-page .logo-fallback {
             color: #0A1B3D !important;
         }
-        .blog-page .latest-articles, 
-        .blog-page .blog-hero,
-        .blog-page .featured-articles {
+        .blog-page .featured-articles,
+        .blog-page .latest-articles {
             background: #ffffff !important;
         }
         .blog-page .latest-item {
@@ -140,12 +140,10 @@
             </div>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="index.html">Projects</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
                     <li class="dropdown">
-                        <a href="services.html">Services <span class="arrow-down">▼</span></a>
+                        <a href="services.html">What we do <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
                             <li class="has-submenu">
                                 <a href="#">Residential <span class="arrow-right">▶</span></a>
@@ -165,6 +163,7 @@
                             </li>
                         </ul>
                     </li>
+                    <li><a href="blog.html" class="active">Blogs</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="menu-icon">
@@ -176,190 +175,305 @@
 
     <main class="page-offset">
         <!-- Blog Hero Section -->
-        <section class="blog-hero" style="padding: 120px 0 80px 0; border-bottom: 2px solid #f8f8f8;">
-            <div class="container text-center">
-                <span class="sub-heading gsap-reveal" style="font-family: 'Times New Roman', Times, serif; color: var(--primary-yellow); letter-spacing: 5px; text-transform: uppercase; font-size: 14px; font-weight: 700; display: block; margin-bottom: 20px;">Insights & Inspiration</span>
-                <h1 class="premium-reveal" style="font-family: 'Times New Roman', Times, serif; font-size: 56px; line-height: 1.1; color: #0A1B3D; margin-bottom: 30px;">
-                    <div class="reveal-line">Interior Design</div>
-                    <div class="reveal-line">Insights & <span class="highlight-yellow" style="box-shadow: inset 0 -15px 0 var(--primary-yellow); opacity: 0.8;">Inspiration</span></div>
-                </h1>
-                <p class="gsap-reveal" style="font-family: 'Times New Roman', Times, serif; font-size: 24px; color: #555; max-width: 850px; margin: 0 auto; line-height: 1.6; font-style: italic;">Discover the latest trends, expert tips, and timeless design principles from our team of interior designers in Bangalore. Transform your space with insights from our luxury 2 BHK and 3 BHK interior design projects.</p>
+        <section class="blog-hero">
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <span class="blog-label">BLOG</span>
+                <h1>Interior Design Insights <br> & Inspiration</h1>
+                <p>Discover the latest trends, expert tips, and timeless design principles from our team of interior designers in Bangalore. Transform your space with insights from our luxury 2 BHK and 3 BHK interior design projects.</p>
             </div>
         </section>
 
-        <!-- Featured Articles Grid -->
+        <!-- Blog Category System -->
+        <section class="blog-filters" style="padding: 40px 0; border-bottom: 1px solid #eee; background: #fff;">
+            <div class="container">
+                <div id="filter-container" class="filter-pills" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                    <button class="filter-btn active" data-category="all" style="background: #001f5c; color: #fff; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">All Articles <span style="color: #e6e632;">(12)</span></button>
+                    <button class="filter-btn" data-category="residential" style="background: #f5f5f5; color: #333; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">Residential <span style="color: #888;">(8)</span></button>
+                    <button class="filter-btn" data-category="commercial" style="background: #f5f5f5; color: #333; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">Commercial <span style="color: #888;">(4)</span></button>
+                    <button class="filter-btn" data-category="kitchen-design" style="background: #f5f5f5; color: #333; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">Kitchen Designs <span style="color: #888;">(3)</span></button>
+                    <button class="filter-btn" data-category="living-room" style="background: #f5f5f5; color: #333; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">Living Room <span style="color: #888;">(5)</span></button>
+                    <button class="filter-btn" data-category="bedroom" style="background: #f5f5f5; color: #333; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">Bedroom</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Articles Grid -->
         <section class="featured-articles" style="padding: 100px 0; background: #fff;">
             <div class="container">
-                <div class="section-label gsap-reveal" style="margin-bottom: 60px;">
-                    <h2 style="font-family: 'Times New Roman', Times, serif; font-size: 48px; color: #0A1B3D; display: inline-block;">Featured Articles</h2>
-                    <p style="color: #888; font-size: 18px; margin-top: 10px;">Dive deep into our most popular interior design stories, innovations, and project showcases.</p>
+                <div id="blog-grid" class="blog-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
+                    
+                    <!-- Article 1: Residential -->
+                    <article class="blog-card" data-category="residential" style="display: flex; flex-direction: column; gap: 20px; transition: all 0.4s ease;">
+                        <a href="#" style="text-decoration: none; color: inherit; display: block;">
+                            <div class="blog-img-wrap" style="height: 250px; border-radius: 20px; overflow: hidden;">
+                                <img src="assets/blog_bedroom.png" alt="Luxury 3 BHK" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                            </div>
+                        </a>
+                        <div class="blog-content">
+                            <span style="color: #001f5c; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Residential</span>
+                            <h3 style="font-size: 24px; color: #001540; margin: 15px 0; line-height: 1.3;"><a href="#" style="text-decoration: none; color: inherit;">Luxury 3 BHK Interior Design: Creating Timeless Elegance</a></h3>
+                            <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">Explore how our team transforms spacious 3 BHK apartments into sophisticated living spaces that blend functionality with high-end aesthetics. From modern minimalism to classic luxury.</p>
+                            <div class="blog-meta" style="border-top: 1px solid #eee; padding-top: 20px; font-size: 14px; color: #999;">
+                                March 1, 2026 &bull; 8 min read
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 2: Commercial -->
+                    <article class="blog-card" data-category="commercial" style="display: flex; flex-direction: column; gap: 20px; transition: all 0.4s ease;">
+                        <a href="#" style="text-decoration: none; color: inherit; display: block;">
+                            <div class="blog-img-wrap" style="height: 250px; border-radius: 20px; overflow: hidden;">
+                                <img src="assets/blog_office.png" alt="Modern Office" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                            </div>
+                        </a>
+                        <div class="blog-content">
+                            <span style="color: #001f5c; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Commercial</span>
+                            <h3 style="font-size: 24px; color: #001540; margin: 15px 0; line-height: 1.3;"><a href="#" style="text-decoration: none; color: inherit;">Modern Office Design Trends for 2026</a></h3>
+                            <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">The evolution of workspace design and how to create productive environments. Discover the key trends shaping the future of offices.</p>
+                            <div class="blog-meta" style="border-top: 1px solid #eee; padding-top: 20px; font-size: 14px; color: #999;">
+                                Feb 28, 2026 &bull; 5 min read
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3: Kitchen Design -->
+                    <article class="blog-card" data-category="kitchen-design" style="display: flex; flex-direction: column; gap: 20px; transition: all 0.4s ease;">
+                        <a href="#" style="text-decoration: none; color: inherit; display: block;">
+                            <div class="blog-img-wrap" style="height: 250px; border-radius: 20px; overflow: hidden;">
+                                <img src="assets/blog_kitchen.png" alt="Kitchen Excellence" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                            </div>
+                        </a>
+                        <div class="blog-content">
+                            <span style="color: #001f5c; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Kitchen Design</span>
+                            <h3 style="font-size: 24px; color: #001540; margin: 15px 0; line-height: 1.3;"><a href="#" style="text-decoration: none; color: inherit;">The Culinary Studio: Functional Kitchen Excellence</a></h3>
+                            <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">Essential tips for creating a kitchen that's both beautiful and highly functional. From smart storage to ergonomic workflow designs.</p>
+                            <div class="blog-meta" style="border-top: 1px solid #eee; padding-top: 20px; font-size: 14px; color: #999;">
+                                Feb 26, 2026 &bull; 6 min read
+                            </div>
+                        </div>
+                    </article>
+
                 </div>
-                
-                <!-- Circular Blog Carousel Section -->
-                <div class="blog-carousel-container" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 50px 0;">
-                    <!-- Images Column -->
-                    <div class="carousel-images" style="position: relative; height: 500px; perspective: 1200px;">
-                        <div class="blog-c-img" data-index="0" style="position: absolute; width: 100%; height: 100%; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.15); transition: all 0.8s cubic-bezier(0.4, 2, 0.3, 1); z-index: 3;">
-                            <img src="assets/blog_bedroom.png" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="blog-c-img" data-index="1" style="position: absolute; width: 100%; height: 100%; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.15); transition: all 0.8s cubic-bezier(0.4, 2, 0.3, 1); opacity: 0; z-index: 1;">
-                            <img src="assets/blog_office.png" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="blog-c-img" data-index="2" style="position: absolute; width: 100%; height: 100%; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.15); transition: all 0.8s cubic-bezier(0.4, 2, 0.3, 1); opacity: 0; z-index: 1;">
-                            <img src="assets/blog_kitchen.png" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                    </div>
-
-                    <!-- Content Column -->
-                    <div class="carousel-content">
-                        <div id="blog-c-text">
-                            <span id="blog-c-tag" style="background: var(--primary-yellow); color: #000; padding: 6px 15px; border-radius: 30px; font-size: 12px; font-weight: 800; text-transform: uppercase;">Residential</span>
-                            <h3 id="blog-c-title" style="font-family: 'Times New Roman', Times, serif; font-size: 42px; color: #0A1B3D; margin: 25px 0 15px; line-height: 1.1;">Luxury 3 BHK Interior Design: Creating Timeless Elegance</h3>
-                            <p id="blog-c-desc" style="color: #666; font-size: 20px; line-height: 1.7; margin-bottom: 40px; min-height: 100px;">Explore how our team transforms spacious 3 BHK apartments into sophisticated living spaces that blend functionality with high-end aesthetics.</p>
-                        </div>
-
-                        <div class="carousel-controls" style="display: flex; gap: 20px;">
-                            <button onclick="prevBlogSlide()" style="width: 60px; height: 60px; border-radius: 50%; border: none; background: #0A1B3D; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='var(--primary-yellow)'; this.style.color='#000'" onmouseout="this.style.background='#0A1B3D'; this.style.color='#fff'">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                            </button>
-                            <button onclick="nextBlogSlide()" style="width: 60px; height: 60px; border-radius: 50%; border: none; background: #0A1B3D; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='var(--primary-yellow)'; this.style.color='#000'" onmouseout="this.style.background='#0A1B3D'; this.style.color='#fff'">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                    const blogSlides = [
-                        {
-                            tag: 'Residential',
-                            title: 'Luxury 3 BHK Interior Design: Creating Timeless Elegance',
-                            desc: 'Explore how our team transforms spacious 3 BHK apartments into sophisticated living spaces that blend functionality with high-end aesthetics.',
-                            tagColor: '#b8860b', tagBg: '#fdf6e3'
-                        },
-                        {
-                            tag: 'Commercial',
-                            title: 'Modern Office Design Trends for 2026',
-                            desc: 'The evolution of workspace design and how to create productive environments tailored for the hybrid work model.',
-                            tagColor: '#0277bd', tagBg: '#e1f5fe'
-                        },
-                        {
-                            tag: 'Kitchen Design',
-                            title: 'The Culinary Studio: Functional Kitchen Excellence',
-                            desc: 'Essential tips for creating a kitchen that\'s both beautiful and highly functional for modern cooking lifestyles.',
-                            tagColor: '#558b2f', tagBg: '#f1f8e9'
-                        }
-                    ];
-
-                    let currentBlogIndex = 0;
-
-                    function updateBlogCarousel() {
-                        const imgs = document.querySelectorAll('.blog-c-img');
-                        const total = blogSlides.length;
-
-                        imgs.forEach((img, i) => {
-                            const offset = (i - currentBlogIndex + total) % total;
-                            
-                            if (offset === 0) { // Active
-                                img.style.transform = 'translateX(0) scale(1) rotateY(0deg)';
-                                img.style.zIndex = '3';
-                                img.style.opacity = '1';
-                                img.style.pointerEvents = 'auto';
-                            } else if (offset === 1 || (total === 2 && offset === 1)) { // Right
-                                img.style.transform = 'translateX(80px) translateY(-50px) scale(0.85) rotateY(-15deg)';
-                                img.style.zIndex = '2';
-                                img.style.opacity = '1';
-                                img.style.pointerEvents = 'none';
-                            } else if (offset === total - 1) { // Left
-                                img.style.transform = 'translateX(-80px) translateY(-50px) scale(0.85) rotateY(15deg)';
-                                img.style.zIndex = '2';
-                                img.style.opacity = '1';
-                                img.style.pointerEvents = 'none';
-                            } else {
-                                img.style.opacity = '0';
-                                img.style.zIndex = '1';
-                            }
-                        });
-
-                        // Update Text
-                        const data = blogSlides[currentBlogIndex];
-                        const titleEl = document.getElementById('blog-c-title');
-                        const descEl = document.getElementById('blog-c-desc');
-                        const tagEl = document.getElementById('blog-c-tag');
-
-                        // Fade out
-                        titleEl.style.opacity = '0';
-                        titleEl.style.transform = 'translateY(10px)';
-                        descEl.style.opacity = '0';
-                        descEl.style.transform = 'translateY(10px)';
-
-                        setTimeout(() => {
-                            tagEl.innerText = data.tag;
-                            tagEl.style.background = data.tagBg;
-                            tagEl.style.color = data.tagColor;
-                            
-                            titleEl.innerText = data.title;
-                            descEl.innerText = data.desc;
-
-                            titleEl.style.opacity = '1';
-                            titleEl.style.transform = 'translateY(0)';
-                            descEl.style.opacity = '1';
-                            descEl.style.transform = 'translateY(0)';
-                        }, 300);
-                    }
-
-                    function nextBlogSlide() {
-                        currentBlogIndex = (currentBlogIndex + 1) % blogSlides.length;
-                        updateBlogCarousel();
-                    }
-
-                    function prevBlogSlide() {
-                        currentBlogIndex = (currentBlogIndex - 1 + blogSlides.length) % blogSlides.length;
-                        updateBlogCarousel();
-                    }
-
-                    // Initial state
-                    document.addEventListener('DOMContentLoaded', updateBlogCarousel);
-                </script>
             </div>
         </section>
 
-        <!-- Horizontal Latest List -->
-        <section class="latest-articles" style="padding: 120px 0; background: #fafafa;">
+        <!-- Latest Articles List -->
+        <section class="latest-feed" style="padding: 100px 0; background: #fafafa;">
             <div class="container">
-                <div class="section-label gsap-reveal" style="margin-bottom: 60px; text-align: center;">
-                    <h2 style="font-family: 'Times New Roman', Times, serif; font-size: 48px; color: #0A1B3D;">Latest Articles</h2>
-                    <p style="color: #666; font-size: 18px;">Stay updated with the latest trends, tips, and insights from our interior design experts.</p>
+                <div class="section-header" style="margin-bottom: 60px;">
+                    <h2 style="font-size: 42px; color: #001540; margin-bottom: 10px;">Latest Articles</h2>
+                    <p style="font-size: 18px; color: #666;">Stay updated with the latest trends, tips, and insights from our interior design experts.</p>
                 </div>
 
-                <div class="latest-row" style="display: flex; flex-direction: column; gap: 30px; max-width: 1000px; margin: 0 auto;">
-                    <!-- Latest 1 -->
-                    <article class="latest-card gsap-reveal" style="display: flex; gap: 50px; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); align-items: center;">
-                        <div class="latest-img" style="width: 400px; height: 250px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
-                            <img src="assets/blog_spa.png" alt="Bathroom Spa" style="width:100%; height:100%; object-fit: cover;">
+                <div class="latest-list" style="display: flex; flex-direction: column; gap: 40px; max-width: 1000px;">
+                    
+                    <!-- Item 1: Spa Bathroom -->
+                    <article class="latest-item" style="display: flex; gap: 40px; align-items: center; background: #fff; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all 0.3s ease;">
+                        <div class="latest-img" style="width: 300px; height: 220px; border-radius: 18px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/bathroom.jpeg" alt="Spa Bathroom" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="latest-info">
-                            <span style="color: #888; font-weight: 800; font-size: 11px; text-transform: uppercase;">Bathrooms</span>
-                            <h3 style="font-family: 'Times New Roman', Times, serif; font-size: 32px; color: #0A1B3D; margin: 15px 0;"><a href="#" style="text-decoration: none; color: inherit;">Turn your bathroom into a spa without breaking the bank</a></h3>
+                            <span style="color: #888; font-weight: 700; font-size: 14px; text-transform: uppercase;">Bathrooms</span>
+                            <h3 style="font-size: 28px; color: #001540; margin: 15px 0 10px;"><a href="#" style="text-decoration: none; color: inherit;">Turn your bathroom into a spa without breaking the bank</a></h3>
                             <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">Discover affordable ways to create a luxurious spa-like bathroom experience with smart design choices and quality fixtures.</p>
+                            <div style="font-size: 14px; color: #999;">Feb 25, 2026 &bull; 7 min read</div>
                         </div>
                     </article>
 
-                    <!-- Latest 2 -->
-                    <article class="latest-card gsap-reveal" style="display: flex; gap: 50px; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); align-items: center;">
-                        <div class="latest-img" style="width: 400px; height: 250px; overflow: hidden; border-radius: 12px; flex-shrink: 0;">
-                            <img src="assets/blog_renovation.png" alt="Renovation" style="width:100%; height:100%; object-fit: cover;">
+                    <!-- Item 2: Renovation Questions -->
+                    <article class="latest-item" style="display: flex; gap: 40px; align-items: center; background: #fff; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                        <div class="latest-img" style="width: 300px; height: 220px; border-radius: 18px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/cupboard.jpeg" alt="Renovation" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="latest-info">
-                            <span style="color: #888; font-weight: 800; font-size: 11px; text-transform: uppercase;">Improvement</span>
-                            <h3 style="font-family: 'Times New Roman', Times, serif; font-size: 32px; color: #0A1B3D; margin: 15px 0;"><a href="#" style="text-decoration: none; color: inherit;">Homeowners must-ask questions before renovating</a></h3>
+                            <span style="color: #888; font-weight: 700; font-size: 14px; text-transform: uppercase;">Improvement</span>
+                            <h3 style="font-size: 28px; color: #001540; margin: 15px 0 10px;"><a href="#" style="text-decoration: none; color: inherit;">Homeowners must-ask questions before renovating</a></h3>
                             <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">Essential questions every homeowner should consider before starting their renovation journey to ensure success.</p>
+                            <div style="font-size: 14px; color: #999;">Feb 24, 2026 &bull; 6 min read</div>
                         </div>
                     </article>
+
+                    <!-- Item 3: Living Room Hosting -->
+                    <article class="latest-item" style="display: flex; gap: 40px; align-items: center; background: #fff; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                        <div class="latest-img" style="width: 300px; height: 220px; border-radius: 18px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/3.png" alt="Living Room" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="latest-info">
+                            <span style="color: #888; font-weight: 700; font-size: 14px; text-transform: uppercase;">Living Room</span>
+                            <h3 style="font-size: 28px; color: #001540; margin: 15px 0 10px;"><a href="#" style="text-decoration: none; color: inherit;">Creating the perfect living room for entertaining guests</a></h3>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">Design tips for crafting a welcoming and functional living space that's perfect for hosting friends and family.</p>
+                            <div style="font-size: 14px; color: #999;">Feb 26, 2026 &bull; 5 min read</div>
+                        </div>
+                    </article>
+
+                    <!-- Item 4: Small Space 2 BHK -->
+                    <article class="latest-item" style="display: flex; gap: 40px; align-items: center; background: #fff; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                        <div class="latest-img" style="width: 300px; height: 220px; border-radius: 18px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/4.png" alt="Small Space" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="latest-info">
+                            <span style="color: #888; font-weight: 700; font-size: 14px; text-transform: uppercase;">Residential</span>
+                            <h3 style="font-size: 28px; color: #001540; margin: 15px 0 10px;"><a href="#" style="text-decoration: none; color: inherit;">Small space solutions for modern 2 BHK apartments</a></h3>
+                            <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">Maximize every inch of your 2 BHK flat with clever storage solutions and multi-functional furniture pieces.</p>
+                            <div style="font-size: 14px; color: #999;">Feb 22, 2026 &bull; 8 min read</div>
+                        </div>
+                    </article>
+
+                    <!-- Item 5: Kitchen Workflow -->
+                    <article class="latest-item" style="display: flex; gap: 40px; align-items: center; background: #fff; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                        <div class="latest-img" style="width: 300px; height: 220px; border-radius: 18px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/5.png" alt="Kitchen Workflow" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="latest-info">
+                            <span style="color: #888; font-weight: 700; font-size: 14px; text-transform: uppercase;">Kitchen Design</span>
+                            <h3 style="font-size: 28px; color: #001540; margin: 15px 0 10px;"><a href="#" style="text-decoration: none; color: inherit;">Modern kitchen layouts that enhance workflow</a></h3>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">Explore the latest kitchen design trends that combine beauty with ergonomic functionality for the modern home.</p>
+                            <div style="font-size: 14px; color: #999;">Feb 21, 2026 &bull; 6 min read</div>
+                        </div>
+                    </article>
+
+                    <!-- Item 6: Future of Work -->
+                    <article class="latest-item" style="display: flex; gap: 40px; align-items: center; background: #fff; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                        <div class="latest-img" style="width: 300px; height: 220px; border-radius: 18px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/6.png" alt="Future Work" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="latest-info">
+                            <span style="color: #888; font-weight: 700; font-size: 14px; text-transform: uppercase;">Commercial</span>
+                            <h3 style="font-size: 28px; color: #001540; margin: 15px 0 10px;"><a href="#" style="text-decoration: none; color: inherit;">Office design trends shaping the future of work</a></h3>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">How contemporary commercial spaces are being redesigned to support hybrid work models and employee wellbeing.</p>
+                            <div style="font-size: 14px; color: #999;">Feb 20, 2026 &bull; 7 min read</div>
+                        </div>
+                    </article>
+
+                    <!-- Item 7: Sustainable Materials -->
+                    <article class="latest-item" style="display: flex; gap: 40px; align-items: center; background: #fff; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                        <div class="latest-img" style="width: 300px; height: 220px; border-radius: 18px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/7.png" alt="Sustainable" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="latest-info">
+                            <span style="color: #888; font-weight: 700; font-size: 14px; text-transform: uppercase;">Residential</span>
+                            <h3 style="font-size: 28px; color: #001540; margin: 15px 0 10px;"><a href="#" style="text-decoration: none; color: inherit;">Sustainable materials for eco-friendly interiors</a></h3>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">A comprehensive guide to choosing environmentally responsible materials for your next interior design project.</p>
+                            <div style="font-size: 14px; color: #999;">Feb 19, 2026 &bull; 9 min read</div>
+                        </div>
+                    </article>
+
                 </div>
+            </div>
+        </section>
+
+        <!-- Transformation CTA Section -->
+        <section class="transformation-cta" style="margin: 80px 0; padding: 0;">
+            <div class="container">
+                <div class="cta-gradient-box" style="background: linear-gradient(135deg, #001f5c, #8bbd2f); border-radius: 40px; padding: 80px; position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 500px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;">
+                        <h2 style="font-size: 40px; color: #fff; line-height: 1.1; max-width: 600px; font-weight: 500;">Begin Your Transformation<br>With A Legacy Of Design<br>Excellence</h2>
+                        <div class="cta-img-wrap" style="width: 350px; height: 350px; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3);">
+                            <img src="assets/image.png" alt="Design Excellence" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <a href="contact.html" class="btn-primary" style="background: #e6e632; color: #000; border: 2px solid #000; box-shadow: 5px 5px 0px #000; padding: 18px 40px; font-weight: 800; border-radius: 12px; text-transform: none; font-size: 20px;">Get Free Quote</a>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 18px; line-height: 1.5; max-width: 400px; text-align: right;">From outdated kitchens to tired bathrooms, we<br>create spaces that make you fall in love with<br>your home again</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corporate Branding Row -->
+        <section class="corporate-brand-row" style="padding: 60px 0; border-top: 1px solid #eee; background: #fff;">
+            <div class="container" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; align-items: flex-start; text-align: center;">
+                
+                <!-- Col 1: Main Logo -->
+                <div class="corp-col" style="border-right: 1px dashed #ddd; padding-right: 15px;">
+                    <img src="assets/arul-logo.png" alt="Arul Group" style="max-width: 140px; margin-bottom: 15px;">
+                    <p style="font-size: 13px; color: #555;">www.arulgroup.in</p>
+                </div>
+
+                <!-- Col 2: Managing Director -->
+                <div class="corp-col" style="border-right: 1px dashed #ddd; padding: 0 15px; text-align: left;">
+                    <h3 style="font-size: 16px; color: #001f5c; line-height: 1.2; margin-bottom: 5px;">Arul Vajravel B.E., M.S.(USA)</h3>
+                    <p style="font-size: 12px; font-weight: 600; color: #888; margin-bottom: 15px;">Managing Director</p>
+                    <div style="font-size: 10px; color: #666; line-height: 1.4;">
+                        <strong>Corporate Office:</strong> Achuth Square, 1st Flr, 1018/1, 24th Main, HSR Layout, Sector-1, Bangalore 560102<br><br>
+                        <strong>Head office:</strong> Plot No. CP5A, Vajra Tower, 2nd Flr, Sipcot II, National Highway, Hosur 635109
+                    </div>
+                </div>
+
+                <!-- Col 3: Arul Rubbers -->
+                <div class="corp-col" style="border-right: 1px dashed #ddd; padding: 0 15px;">
+                    <span style="font-size: 9px; color: #aaa; text-transform: uppercase;">An ISO 9001:2015 Company</span>
+                    <img src="assets/p3.png" alt="Arul Rubbers" style="max-height: 60px; margin: 15px 0;">
+                    <p style="font-size: 11px; color: #666;">www.arulrubbers.com<br>arul@arulrubbers.com</p>
+                </div>
+
+                <!-- Col 4: Arul Polymers -->
+                <div class="corp-col" style="border-right: 1px dashed #ddd; padding: 0 15px;">
+                    <span style="font-size: 9px; color: #aaa; text-transform: uppercase;">An ISO 9001:2015 Company</span>
+                    <img src="assets/p2.png" alt="Arul Polymers" style="max-height: 60px; margin: 15px 0;">
+                    <p style="font-size: 11px; color: #666;">www.arulpolymers.com<br>arul@arulpolymers.com</p>
+                </div>
+
+                <!-- Col 5: Neo Heights & Studio -->
+                <div class="corp-col" style="padding-left: 15px;">
+                    <img src="assets/vj.png" alt="Vajra Panels" style="max-height: 40px; margin-bottom: 25px;">
+                    <div style="margin-top: 10px;">
+                        <img src="assets/feature-logo.png" alt="Neo Studio Initiative" style="max-width: 100%;">
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
+
+    <!-- Blog Interactivity Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.getAttribute('data-category');
+
+                    // Update UI
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.background = '#f5f5f5';
+                        b.style.color = '#333';
+                    });
+                    btn.classList.add('active');
+                    btn.style.background = '#001f5c';
+                    btn.style.color = '#fff';
+
+                    // Filter Cards
+                    blogCards.forEach(card => {
+                        const cardCat = card.getAttribute('data-category');
+                        if (category === 'all' || cardCat === category) {
+                            card.style.display = 'flex';
+                            setTimeout(() => card.style.opacity = '1', 10);
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => card.style.display = 'none', 400);
+                        }
+                    });
+                });
+            });
+
+            // Hover effects for images
+            blogCards.forEach(card => {
+                const img = card.querySelector('img');
+                card.addEventListener('mouseenter', () => {
+                    img.style.transform = 'scale(1.1)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    img.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
 
     <footer class="site-footer">
         <div class="container">
@@ -428,6 +542,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script type="module" src="/script.js"></script>
+    <script src="modal.js"></script>
 </body>
 </html>
 

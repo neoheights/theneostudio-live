@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Studio | Projects</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -90,52 +91,62 @@
 
         <!-- Residential & Commercial Portfolio Section -->
         <section class="portfolio-switcher" style="background: #0a1b3d;">
-            <div class="portfolio-dual-container">
-                <!-- Left Side - Residential -->
-                <div class="portfolio-side">
-                    <h3 class="portfolio-title">Residential</h3>
-                    <div class="stack-container" id="residential-stack-proj">
-                        <div class="card-stack-item" data-index="0">
-                            <div class="card-rotate">
-                                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&q=80&w=800" alt="Residential Interior 1">
-                            </div>
-                        </div>
-                        <div class="card-stack-item" data-index="1">
-                            <div class="card-rotate">
-                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800" alt="Residential Interior 2">
-                            </div>
-                        </div>
-                        <div class="card-stack-item" data-index="2">
-                            <div class="card-rotate">
-                                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800" alt="Residential Interior 3">
-                            </div>
-                        </div>
-                    </div>
+            <div class="container">
+                <div class="portfolio-tabs">
+                    <button class="tab-btn active" data-tab="residential">Residential</button>
+                    <button class="tab-btn" data-tab="commercial">Commercial</button>
                 </div>
 
-                <!-- Right Side - Commercial -->
-                <div class="portfolio-side">
-                    <h3 class="portfolio-title">Commercial</h3>
-                    <div class="stack-container" id="commercial-stack-proj">
-                        <div class="card-stack-item" data-index="0">
-                            <div class="card-rotate">
-                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Commercial Interior 1">
-                            </div>
+                <div class="tab-wrapper">
+                    <div class="tab-pane active" id="residential">
+                        <div class="portfolio-grid-modern">
+                            <a href="economy.html" class="portfolio-card-modern">
+                                <div class="card-img-wrap">
+                                    <img src="assets/economy.jpeg" alt="Economy Interior">
+                                </div>
+                                <div class="card-label">Economy</div>
+                            </a>
+                            <a href="elite.html" class="portfolio-card-modern">
+                                <div class="card-img-wrap">
+                                    <img src="assets/elite.jpeg" alt="Elite Interior">
+                                </div>
+                                <div class="card-label">Elite</div>
+                            </a>
+                            <a href="luxe.html" class="portfolio-card-modern">
+                                <div class="card-img-wrap">
+                                    <img src="assets/luxe.jpeg" alt="Luxe Interior">
+                                </div>
+                                <div class="card-label">Luxe</div>
+                            </a>
                         </div>
-                        <div class="card-stack-item" data-index="1">
-                            <div class="card-rotate">
-                                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800" alt="Commercial Interior 2">
-                            </div>
-                        </div>
-                        <div class="card-stack-item" data-index="2">
-                            <div class="card-rotate">
-                                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=800" alt="Commercial Interior 3">
-                            </div>
+                    </div>
+
+                    <div class="tab-pane" id="commercial">
+                        <div class="portfolio-grid-modern">
+                            <a href="industrial.html" class="portfolio-card-modern">
+                                <div class="card-img-wrap">
+                                    <img src="assets/industrial.jpeg" alt="Industrial Interior">
+                                </div>
+                                <div class="card-label">Industrial</div>
+                            </a>
+                            <a href="retail.html" class="portfolio-card-modern">
+                                <div class="card-img-wrap">
+                                    <img src="assets/retail.jpeg" alt="Retail Interior">
+                                </div>
+                                <div class="card-label">Retail</div>
+                            </a>
+                            <a href="workspaces.html" class="portfolio-card-modern">
+                                <div class="card-img-wrap">
+                                    <img src="assets/workspace.jpeg" alt="Workspaces Interior">
+                                </div>
+                                <div class="card-label">Workspaces</div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section class="exclusive-partners">
             <div class="container">
@@ -262,6 +273,7 @@
 
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script type="module" src="/script.js"></script>
+    <script src="modal.js"></script>
 
 
 

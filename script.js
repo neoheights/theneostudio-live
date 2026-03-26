@@ -308,16 +308,40 @@ if (document.readyState === 'loading') {
 window.addEventListener('load', initPremiumReveal);
 
 
-// Initialize Card Stacks on Load
+// Initialize Components on Load
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize both residential and commercial stacks (home & projects pages)
+    initPortfolioTabs();
+    // Initialize milestones animations
     setTimeout(() => {
-        initializeCardStack('residential-stack');
-        initializeCardStack('commercial-stack');
-        initializeCardStack('residential-stack-proj');
-        initializeCardStack('commercial-stack-proj');
+        initMilestoneAnimations();
     }, 100);
 });
+
+// Portfolio Tab Logic
+function initPortfolioTabs() {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panes = document.querySelectorAll('.tab-pane');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.dataset.tab;
+
+            // Update active button
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Update active pane
+            panes.forEach(pane => {
+                if (pane.id === target) {
+                    pane.classList.add('active');
+                } else {
+                    pane.classList.remove('active');
+                }
+            });
+        });
+    });
+}
+
 
 // Card Stack Animation - Matching React behavior
 function initializeCardStack(stackId) {
@@ -573,8 +597,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initFeatureReveals();
     initStatsCounter();
     initTestimonialSlider();
-    initMilestoneAnimations();
     initFAQAccordion();
+
 
     // Sticky Header
     const header = document.querySelector('header');

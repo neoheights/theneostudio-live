@@ -1,8 +1,9 @@
-﻿<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Studio | Services</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -82,13 +83,11 @@
             </div>
             <div class="nav-right">
                 <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li class="dropdown">
-        <a href="services.html" class="active">Services <span class="arrow-down">▼</span></a>
-        <ul class="dropdown-menu">
+                    <li><a href="index.html#home-portfolio">Projects</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services" class="active">What we do <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
                             <li class="has-submenu">
                                 <a href="#">Residential <span class="arrow-right">▶</span></a>
                                 <ul class="submenu">
@@ -105,9 +104,10 @@
                                     <li><a href="workspaces.html">Workspaces</a></li>
                                 </ul>
                             </li>
-        </ul>
-    </li>
-    <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
 </ul>
                 <div class="menu-icon">
                     <span></span>
@@ -233,6 +233,7 @@
 
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script type="module" src="/script.js"></script>
+    <script src="modal.js"></script>
 
 
 
