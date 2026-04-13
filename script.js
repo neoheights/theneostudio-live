@@ -1,3 +1,9 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register GSAP plugins immediately
+gsap.registerPlugin(ScrollTrigger);
+
 // Typewriter effect removed - replaced with React FlipWords component in main.tsx
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
@@ -33,8 +39,7 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
+// GSAP plugins registered at top of file
 
 // Legacy blur text animation removed - replaced with WhisperText component in main.tsx
 
