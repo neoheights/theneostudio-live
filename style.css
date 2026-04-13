@@ -61,6 +61,17 @@ p, span, li, a {
     font-weight: 400; /* BDO Grotesk Regular */
 }
 
+/* Image Protection */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    pointer-events: auto; /* Keep clickable if wrapped in link */
+}
+
 body.loaded {
     opacity: 1;
 }
@@ -120,8 +131,10 @@ header {
     z-index: 1000;
     padding: 20px 0;
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    background: transparent;
-    border-bottom: 1px solid transparent;
+    background: rgba(10, 27, 61, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 header.scrolled {
@@ -1195,7 +1208,7 @@ header.scrolled .logo-wrapper {
 }
 
 .purpose-main-title {
-    font-size: 56px;
+    font-size: 42px;
     font-weight: 800;
     color: #111;
     margin-bottom: 20px;
@@ -1670,7 +1683,7 @@ header.scrolled .logo-wrapper {
 /* Blog Preview Section */
 .blog-preview {
     background: #fff;
-    padding: 100px 0;
+    padding: 60px 0 20px 0;
 }
 
 .blog-header {
@@ -1678,21 +1691,19 @@ header.scrolled .logo-wrapper {
     justify-content: space-between;
     align-items: flex-start;
     /* Align higher as requested */
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     gap: 100px;
 }
 
 .blog-header h2 {
-    font-family: "Times New Roman", Times, serif;
+    font-family: var(--font-primary);
     font-size: 44px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.3;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.2;
     color: #001f5c;
-    text-shadow: 0 0 15px rgba(0, 31, 92, 0.2);
-    letter-spacing: -0.5px;
+    letter-spacing: -1.5px;
     flex: 2;
-    /* Increased weight for the heading */
 }
 
 
@@ -1763,7 +1774,7 @@ header.scrolled .logo-wrapper {
 .stats-bar {
     background: #001f5c;
     /* Deep blue match */
-    padding: 60px 0;
+    padding: 20px 0;
     /* Reduced padding */
     color: #fff;
     margin-bottom: 0;
@@ -1838,8 +1849,8 @@ header.scrolled .logo-wrapper {
 }
 
 .brand-left {
-    flex: 1.1;
-    padding: 60px 0 60px 40px;
+    flex: 1.5;
+    padding: 60px 80px 60px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1849,7 +1860,7 @@ header.scrolled .logo-wrapper {
 
 
 .brand-main-title {
-    font-size: 64px;
+    font-size: 48px;
     font-weight: 800;
     color: #111;
     line-height: 1.1;
@@ -1936,7 +1947,8 @@ header.scrolled .logo-wrapper {
 .brand-right {
     flex: 1;
     overflow: hidden;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 3;
+    max-height: 500px;
     background: #fdfdfd;
     display: flex;
     align-items: center;
@@ -2027,6 +2039,7 @@ header.scrolled .logo-wrapper {
     width: 100%;
     border-radius: 20px;
     overflow: hidden;
+    max-height: 400px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Making shadow more subtle too */
 }
 
@@ -3825,7 +3838,7 @@ header.scrolled .logo-wrapper {
 }
 
 .footer-heading h2 {
-    font-size: 56px;
+    font-size: 42px;
     line-height: 1.1;
     font-weight: 500;
     margin: 0;
@@ -3961,7 +3974,7 @@ header.scrolled .logo-wrapper {
         flex-direction: column;
     }
     .footer-heading h2 {
-        font-size: 40px;
+        font-size: 32px;
     }
     .pill-badge {
         font-size: 32px;
@@ -3980,6 +3993,7 @@ header.scrolled .logo-wrapper {
 .page-offset {
     padding-top: 130px;
     min-height: 60vh;
+    background: #fff;
 }
 
 .blog-details {
@@ -4791,24 +4805,37 @@ header.scrolled .logo-wrapper {
 
 /* Certifications Showcase */
 .certifications-showcase {
-    margin: 40px auto 60px;
-    text-align: center;
-    max-width: 1000px;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .certifications-showcase {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 
 .certs-img {
     width: 100%;
-    max-width: 800px;
-    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    padding: 24px;
+    border: 1px solid #f0f0f0;
 }
 
 /* ===== BLOG PAGE: Hero Section ===== */
 .blog-hero {
     position: relative;
     padding: 160px 0 120px 0;
-    background: #000 url('./assets/blog-hero.jpg') no-repeat center center;
+    background: #000 url('./assets/image.copy.jpg') no-repeat center center;
     background-size: cover;
     min-height: 80vh;
     display: flex;
@@ -4844,7 +4871,7 @@ header.scrolled .logo-wrapper {
 }
 
 .blog-hero h1 {
-    font-size: 72px;
+    font-size: 48px;
     line-height: 1.1;
     margin: 30px 0 20px;
     font-weight: 700;
@@ -4852,7 +4879,7 @@ header.scrolled .logo-wrapper {
 }
 
 .blog-hero p {
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(255,255,255,0.9);
     max-width: 650px;
     line-height: 1.6;
@@ -5153,8 +5180,8 @@ li, span, small {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-    border-top: 1px solid #eee;
-    padding-top: 60px;
+    border-top: none;
+    padding-top: 30px;
 }
 
 .category-item h3 {

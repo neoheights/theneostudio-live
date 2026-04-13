@@ -1,6 +1,13 @@
 // Typewriter effect removed - replaced with React FlipWords component in main.tsx
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
+    
+    // Protect Images from right-click and save as
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.nodeName === 'IMG') {
+            e.preventDefault();
+        }
+    }, false);
 });
 
 document.querySelector('.close-icon')?.addEventListener('click', () => {
